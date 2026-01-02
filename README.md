@@ -19,8 +19,8 @@ This is a simple implementation of the classic **Tic-Tac-Toe** game written in *
 To compile the code using `g++`, run:
 
 ```bash
-g++ -o tic_tac_toe tic_tac_toe.cpp
-./tic_tac_toe
+g++ -std=c++11 -o TicTacToe_Gr77 MainTicTacToe.cpp
+./TicTacToe_Gr77
 ```
 
 Make sure your compiler supports C++11 or later.
