@@ -1,170 +1,128 @@
+Tic-Tac-Toe (C++) Console Game
 
-# Tic-Tac-Toe (C++) Console Game
+Ky projekt është një implementim në C++ i lojës klasike Tic-Tac-Toe për console. Dy lojtarë luajnë me radhë në një fushë 3×3, duke synuar të vendosin tre shenja rresht (horizontalisht, vertikalisht ose diagonalisht). Loja mbështet disa raunde rresht, emra të personalizuar dhe mbajtje rezultatesh.
 
-This is a simple implementation of the classic **Tic-Tac-Toe** game written in **C++**. Two players take turns marking spaces on a 3×3 grid, attempting to get three of their marks in a row—horizontally, vertically, or diagonally—before the other.
+Features
 
-## Features
+Lojë me dy lojtarë (pa AI)
 
-- Two-player mode (no AI)
-- Turn-based gameplay
-- Input validation
-- Win detection (rows, columns, diagonals)
-- Draw detection (when board is full with no winner)
-- Console display of the game board after every move
+Emra të personalizuar për Player X dhe Player O
 
----
+Scoreboard që ruan fitoret dhe barazimet
 
-## How to Compile and Run
+Mundësi për të luajtur disa raunde rresht
 
+Gameplay me radhë (turn-based)
+
+Validim i inputit (kontroll kufijsh dhe qelizash të zëna)
+
+Zbulim fitoreje (rreshta, kolona, diagonale)
+
+Zbulim barazimi
+
+Shfaqje e pastër e tabelës në console pas çdo lëvizjeje
+
+How to Compile and Run
+
+Për ta kompiluar programin duke përdorur g++:
 To compile the code using `g++`, run:
 
-```bash
 g++ -std=c++11 -o TicTacToe_Gr77 MainTicTacToe.cpp
 ./TicTacToe_Gr77
-```
 
-Make sure your compiler supports C++11 or later.
+How to Play
 
----
+Loja fillon automatikisht pas ekzekutimit.
 
-## How to Play
+Në fillim, përdoruesi fut emrat për Player X dhe Player O.
 
-1. The game starts automatically when run.
-2. The board is displayed in the console. It is a 3x3 grid indexed from `0` to `2` for both rows and columns.
-3. Players take turns. Player `X` always starts first, followed by Player `O`.
-4. When prompted, enter your move as two integers separated by a space — the **row** and **column** where you want to place your mark.
-   - Example: `1 2` means row 1, column 2.
-5. If a player tries to move to an occupied or out-of-bounds space, the move is rejected and the same player is asked to try again.
-6. After each move, the board is updated and displayed.
-7. The game ends when:
-   - One player gets **three marks in a row** (horizontal, vertical, or diagonal).
-   - All spaces are filled without a winner (draw).
+Tabela është një grid 3×3 me indekse nga 0 deri në 2 për rreshta dhe kolona.
 
----
+Player X fillon gjithmonë i pari.
 
-## Game Layout Example
+Kur të kërkohet, fut dy numra: rreshti dhe kolona ku dëshiron të vendosësh shenjën.
 
-The board starts empty:
+Shembull: 1 2 → rreshti 1, kolona 2
 
-```
+Nëse lëvizja është jashtë kufijve ose qeliza është e zënë, lëvizja refuzohet dhe i njëjti lojtar provon përsëri.
+
+Loja përfundon kur:
+
+Një lojtar fiton
+
+Tabela mbushet pa fitues (barazim)
+
+Pas çdo raundi shfaqet scoreboard-i dhe pyetja nëse dëshironi të luani përsëri.
+
+Game Layout Example
+
+Tabela bosh:
+
  | | 
 -----
  | | 
 -----
- | | 
-```
+ | |
+ 
+Pas disa lëvizjeve:
 
-After a few moves:
-
-```
 X|O| 
 -----
  |X| 
 -----
  | |O
-```
+ 
+Shembull rezultati:
+John (X) wins!
+Scoreboard:
+John (X): 2
+Anna (O): 1
+Draws: 1
+Code Overview
 
-If Player `X` makes a line across, down, or diagonally, a message like this will display:
+Class: TicTacToe
 
-```
-Player X wins!
-```
+Private Members
 
-If the board fills without a winner:
+vector<vector<char>> board – përfaqëson fushën 3×3
 
-```
-It's a draw!
-```
+char currentPlayer – lojtari aktual ('X' ose 'O')
 
----
+string playerXName, playerOName – emrat e lojtarëve
 
-## Code Overview
+int scoreX, scoreO, draws – rezultatet
 
-### Class: `TicTacToe`
+Public Methods
 
-#### Private Members:
-- `vector<vector<char>> board`  
-  Represents the 3×3 game board initialized with spaces `' '`.
+TicTacToe() – inicializon tabelën dhe rezultatet
 
-- `char currentPlayer`  
-  Keeps track of whose turn it is: `'X'` or `'O'`.
+getPlayerNames() – merr emrat e lojtarëve
 
-#### Public Methods:
+displayBoard() – shfaq tabelën
 
-- `TicTacToe()`  
-  Constructor that initializes the board and sets the starting player to `'X'`.
+placeMark(int row, int col) – vendos shenjën me validim
 
-- `void displayBoard()`  
-  Displays the current state of the board in the console.
+checkWin() – kontrollon fitore
 
-- `bool placeMark(int row, int col)`  
-  Attempts to place the current player's mark at the given position. Returns `false` if invalid.
+switchPlayer() – ndërron lojtarin
 
-- `bool checkWin()`  
-  Checks if the current player has a winning combination on the board.
+updateScore(char winner) – përditëson scoreboard-in
 
-- `void switchPlayer()`  
-  Changes the current player from `'X'` to `'O'` or vice versa.
+displayScores() – shfaq rezultatet
 
-- `void playGame()`  
-  Main game loop that handles turns, input, win/draw logic, and displays the final result.
+resetBoard() – rifillon tabelën për raund të ri
 
-### `main()`
+playGame() – logjika kryesore e lojës
 
-Creates a `TicTacToe` object and starts the game.
+Customization Ideas
 
----
+Shtimi i një AI (minimax)
 
-## Input Notes
+Ruajtja e rezultateve në file
 
-- Input is taken via `std::cin`.
-- Always enter valid integers between `0` and `2` for rows and columns.
-- Invalid inputs (out of bounds or occupied cells) will prompt the same player to try again.
+Ndryshimi i madhësisë së tabelës (NxN)
 
----
-
-## Example Gameplay (Sample Session)
-
-```
-Current Board:
- | | 
------
- | | 
------
- | | 
-Player X, enter your move (row and column): 0 0
-
-Current Board:
-X| | 
------
- | | 
------
- | | 
-Player O, enter your move (row and column): 1 1
-
-Current Board:
-X| | 
------
- |O| 
------
- | | 
-Player X, enter your move (row and column): 0 1
-
-... (game continues)
-
-Player X wins!
-```
-
----
-
-## Customization Ideas
-
-- Add a score counter for multiple rounds.
-- Allow players to enter names.
-- Add an AI opponent using minimax algorithm.
-- Make the board size dynamic (e.g., 4x4 or NxN).
-
----
+Interface grafike (SFML / SDL)
 
 ## License
 
