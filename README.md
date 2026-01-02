@@ -57,17 +57,21 @@ Pas çdo raundi shfaqet scoreboard-i dhe pyetja nëse dëshironi të luani përs
 Game Layout Example
 
 Tabela bosh:
+
  | | 
 -----
  | | 
 -----
- | | 
+ | |
+ 
 Pas disa lëvizjeve:
+
 X|O| 
 -----
  |X| 
 -----
  | |O
+ 
 Shembull rezultati:
 John (X) wins!
 Scoreboard:
