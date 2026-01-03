@@ -46,7 +46,7 @@ Save the source as `MainTicTacToe.cpp` and compile with a C++11 (or newer) compi
 ```bash
 g++ -std=c++11 -o TicTacToe_Gr77 MainTicTacToe.cpp
 ./TicTacToe_Gr77
-
+```
 ---
 
 ## Board Layouts
