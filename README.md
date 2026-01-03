@@ -44,11 +44,8 @@ A two-player Tic-Tac-Toe console game with additional quality-of-life features: 
 Save the source as `MainTicTacToe.cpp` and compile with a C++11 (or newer) compiler:
 
 ```bash
-g++ -std=c++11 -o tic_tac_toe MainTicTacToe.cpp
-./tic_tac_toe
-```
-
-If your file has a different name, replace `MainTicTacToe.cpp` with that filename.
+g++ -std=c++11 -o TicTacToe_Gr77 MainTicTacToe.cpp
+./TicTacToe_Gr77
 
 ---
 
